@@ -8,10 +8,12 @@
 * Add support for new value `paypay` on enums `ConfirmationToken.payment_method_preview.type` and `PaymentMethod.type`
 * Add support for new value `paypay` on enums `Customer#list_payment_methods.type`, `PaymentMethod#create.type`, and `PaymentMethod#list.type`
 * Add support for `chargeback_loss_reason_code` on `Dispute.payment_method_details.klarna`
+* Remove support for `iterations` on `Invoice#create_preview.schedule_details.phases[]`, `SubscriptionSchedule#create.phases[]`, and `SubscriptionSchedule#update.phases[]`
 * Add support for new value `paypay` on enums `PaymentIntent#create.excluded_payment_method_types` and `PaymentIntent.excluded_payment_method_types`
 * Add support for new value `paypay` on enums `PaymentLink#create.payment_method_types`, `PaymentLink#update.payment_method_types`, and `PaymentLink.payment_method_types`
 * Add support for `fr_meal_voucher_conecs` on `PaymentMethodConfiguration#create`, `PaymentMethodConfiguration#update`, and `PaymentMethodConfiguration`
 * Remove support for `link` and `pay_by_bank` on `PaymentMethod#update`
 * Add support for new values `acknowledged` and `payment_never_settled` on enum `Review.closed_reason`
+* Add support for `bbpos_wisepad3` on `Terminal.Configuration#create`, `Terminal.Configuration#update`, and `Terminal.Configuration`
 * Add support for new value `2025-09-30.clover` on enum `WebhookEndpoint#create.api_version`
 * Add support for error codes `financial_connections_account_pending_account_numbers` and `financial_connections_account_unavailable_account_numbers` on `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `SetupAttempt.setup_error`, `SetupIntent.last_setup_error`, and `StripeError`
