@@ -64,6 +64,7 @@ runs:
           echo "Pulling specs for ${{ inputs.openapi_version }}"
           curl "${CURL_OPTS[@]}" https://raw.githubusercontent.com/stripe/openapi/${{ inputs.openapi_version }}/openapi/$SPEC_NAME -o $CURRENT_OPENAPI_SPEC
           curl "${CURL_OPTS[@]}" https://raw.githubusercontent.com/stripe/openapi/${{ inputs.openapi_version }}/openapi/$FIXTURES_NAME -o $CURRENT_FIXTURES_JSON
+          echo "Successfully pulled specs!"
         elif [ -n "${{ inputs.spec_path }}" ]; then
           echo "Spec path provided, using spec at ${{ inputs.spec_path }}"
           CURRENT_OPENAPI_SPEC="${{ inputs.spec_path }}"
@@ -76,7 +77,9 @@ runs:
 
         SPEC_PATH_ARG=${CURRENT_OPENAPI_SPEC:+-spec $CURRENT_OPENAPI_SPEC}
         FIXTURES_ARG=${CURRENT_FIXTURES_JSON:+-fixtures $CURRENT_FIXTURES_JSON}
+        echo "Running with args $FIXTURES_ARG $SPEC_PATH_ARG"
+        head $CURRENT_OPENAPI_SPEC
 
         docker run -d -p 12111-12112:12111-12112 \
           -v "${{ github.workspace }}:/workspace" \
-          stripe/stripe-mock $BETA_ARG $FIXTURES_ARG $SPEC_PATH_ARG && sleep 7
+          stripe/stripe-mock $BETA_ARG $FIXTURES_ARG $SPEC_PATH_ARG && sleep 30
