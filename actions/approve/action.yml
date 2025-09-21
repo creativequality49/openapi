@@ -6,6 +6,7 @@ inputs:
     required: true
   repo:
     description: 'repository name'
+    description: 'repository Stripe python 12.5.1 '
     required: true
   github_app_id:
     description: 'GitHub Approver App ID'
